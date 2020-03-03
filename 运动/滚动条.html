@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#parent{
+				width: 600px;
+				height: 20px;
+				background: #ccc;
+				position: relative;
+				margin: 0 auto;
+			}
+			#son{
+				width: 20px;
+				height: 20px;
+				background: red;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			#div1{
+				width: 0;
+				height: 0;
+				background: green;
+				margin: 20px auto;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload=function (){
+				var oParent = document.getElementById('parent');
+				var oSon = document.getElementById('son');
+				var oDiv = document.getElementById('div1');
+				
+				var divX = 0;
+				var divY = 0;
+				
+				oSon.onmousedown=function (ev){
+					var oEvent = event || ev;
+					
+					divX = oEvent.clientX - oSon.offsetLeft;
+					divY = oEvent.clientY - oSon.offsetTop;
+					
+					document.onmousemove=function (ev){
+						var oEvent = event || ev;
+						var l = oEvent.clientX - divX;
+						
+						if(l < 0){
+							l = 0;
+						}
+						else if(l > oParent.offsetWidth - oSon.offsetWidth){
+							l = oParent.offsetWidth - oSon.offsetWidth;
+						}
+						
+						oSon.style.left = l + 'px';
+						
+						var scale = l/(oParent.offsetWidth - oSon.offsetWidth);
+						//document.title = l/580;
+						oDiv.style.width = 600*scale+'px';
+						oDiv.style.height = 600*scale+'px';
+					};
+					
+					document.onmouseup=function (){
+						document.onmousemove = null;
+						document.onmouseup = null;
+					}
+				}
+			};
+		</script>
+	</head>
+	<body>
+		<div id="parent">
+			<div id="son"></div>
+		</div>
+		<div id="div1"></div>
+	</body>
+</html>

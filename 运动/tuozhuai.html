@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#div2{
+				width: 700px;
+				height: 500px;
+				background: #ccc;
+				position: relative;
+			}
+			#div1{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload=function (){
+				var oDiv = document.getElementById('div1');
+				var oDiv2 = document.getElementById('div2');
+				
+				var divX = 0;
+				var divY = 0;
+				
+				oDiv.onmousedown=function (ev){
+					var oEvent = event || ev;
+					
+					divX = oEvent.clientX - oDiv.offsetLeft;
+					divY = oEvent.clientY - oDiv.offsetTop;
+					
+					document.onmousemove=function (ev){
+						var oEvent = event || ev;
+						var l = oEvent.clientX - divX;
+						var t = oEvent.clientY - divY;
+						
+						if(l < 50){    //吸附
+							l = 0;
+						}
+						else if(l > oDiv2.offsetWidth-oDiv.offsetWidth){
+							l = oDiv2.offsetWidth-oDiv.offsetWidth;
+						}
+						
+						if(t < 50){
+							t = 0;
+						}
+						else if(t > oDiv2.offsetHeight-oDiv.offsetHeigth){
+							t =oDiv2.offsetHeight-oDiv.offsetHeigth;
+						}
+						
+						oDiv.style.left = l + 'px';
+						oDiv.style.top = t + 'px';
+					};
+					
+					document.onmouseup=function (){
+						document.onmousemove = null;
+						document.onmouseup = null;
+					}
+				}
+			};
+		</script>
+	</head>
+	<body>
+		<div id="div2">
+			<div id="div1"></div>
+		</div>
+	</body>
+</html>

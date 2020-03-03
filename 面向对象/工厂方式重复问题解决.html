@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<script type="text/javascript">
+		function CreatePerson(name, qq){   //构造函数
+			this.name = name;
+			this.qq = qq;
+		}
+		
+		CreatePerson.prototype.showName=function (){    //原型
+			alert('我的名字叫：'+this.name);
+		};
+		CreatePerson.prototype.showQq=function (){
+			alert('我的QQ号码是：'+this.qq);
+		};
+		
+		var obj1 = new CreatePerson('张三', '123456');
+		obj1.showName();
+		obj1.showQq();
+		
+		var obj2 = new CreatePerson('李素', '789456');
+		obj2.showName();
+		obj2.showQq();
+		
+	</script>
+	<body>
+	</body>
+</html>

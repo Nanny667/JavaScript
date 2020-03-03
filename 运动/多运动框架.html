@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div{
+				width: 200px;
+				height: 200px;
+				margin: 20px;
+				float: left;
+				background: pink;
+				filter: alpha(opacity: 30);
+				opacity: 0.3;
+			}
+		</style>
+		<script>
+			window.onload=function (){
+				var oDiv = document.getElementsByTagName('div');
+				
+				for(var i=0; i<oDiv.length; i++){
+					oDiv[i].alpha=30;
+					
+					oDiv[i].onmouseover=function (){
+						startMove(this, 100);
+					};
+					oDiv[i].onmouseout=function (){
+						startMove(this, 30);
+					};
+				}
+			};
+			//var alpha = 30;
+			
+			function startMove(obj, oTarget){
+				//var timer = null;
+				
+				clearInterval(obj.timer);
+				obj.timer=setInterval(function (){
+					var speed = (oTarget-obj.alpha)/6;
+					speed=speed>0?Math.ceil(speed):Math.floor(speed);
+					
+					if(obj.alpha == oTarget){
+						clearInterval(obj.timer);
+					}
+					else
+					{
+						obj.alpha+=speed;
+						
+						obj.style.filter='alpha(opacity:'+obj.alpha+')';
+						obj.style.opacity=obj.alpha/100;
+					}
+					
+					
+				}, 30);
+			}
+		</script>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#parent{
+				width: 600px;
+				height: 20px;
+				background: #ccc;
+				position: relative;
+				margin: 0 auto;
+			}
+			#son{
+				width: 20px;
+				height: 20px;
+				background: red;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			#div1{
+				width: 400px;
+				height: 300px;
+				border: 1px solid black;
+				position: relative;
+				overflow: hidden;
+			}
+			#div2{
+				position: absolute;
+				left: 0;
+				top: -5px;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload=function (){
+				var oParent = document.getElementById('parent');
+				var oSon = document.getElementById('son');
+				var oDiv = document.getElementById('div1');
+				var oDiv2 = document.getElementById('div2');
+				
+				var divX = 0;
+				var divY = 0;
+				
+				oSon.onmousedown=function (ev){
+					var oEvent = event || ev;
+					
+					divX = oEvent.clientX - oSon.offsetLeft;
+					divY = oEvent.clientY - oSon.offsetTop;
+					
+					document.onmousemove=function (ev){
+						var oEvent = event || ev;
+						var l = oEvent.clientX - divX;
+						
+						if(l < 0){
+							l = 0;
+						}
+						else if(l > oParent.offsetWidth - oSon.offsetWidth){
+							l = oParent.offsetWidth - oSon.offsetWidth;
+						}
+						
+						oSon.style.left = l + 'px';
+						
+						var scale = l/(oParent.offsetWidth - oSon.offsetWidth);
+						//document.title = l/580;
+						oDiv2.style.top = -scale*(oDiv2.offsetHeight - oDiv.offsetHeight) + 'px';
+					};
+					
+					document.onmouseup=function (){
+						document.onmousemove = null;
+						document.onmouseup = null;
+					}
+				}
+			};
+		</script>
+	</head>
+	<body>
+		<div id="parent">
+			<div id="son"></div>
+		</div>
+		<div id="div1">
+			<div id="div2">哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈反反复复烦烦烦烦烦烦烦烦烦烦烦烦烦烦烦哈哈哈
+			哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈反反复复烦烦烦烦烦烦烦烦烦烦烦烦烦烦烦哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+			哈哈哈哈哈反反复复烦烦烦烦烦烦烦烦烦烦烦烦烦烦烦哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈反反复复烦烦
+			烦烦烦烦烦烦烦烦烦烦烦烦烦哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈反反复复烦烦烦烦烦烦烦烦烦烦烦烦烦
+			烦烦哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈反反复复烦烦烦烦烦烦烦烦烦烦烦烦烦烦烦哈哈哈哈哈哈哈哈哈
+			哈哈哈哈哈哈哈哈哈哈反反复复烦烦烦烦烦烦烦烦烦烦烦烦烦烦烦哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈反
+			反复复烦烦烦烦烦烦烦烦烦烦烦烦烦烦烦哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈反反复复烦烦烦烦烦烦烦烦
+			烦烦烦烦烦烦烦哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈反反复复烦烦烦烦烦烦烦烦烦烦烦烦烦烦烦哈哈哈哈
+			哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈反反复复烦烦烦烦烦烦烦烦烦烦烦烦烦烦烦哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+			哈哈哈哈反反复复烦烦烦烦烦烦烦烦烦烦烦烦烦烦烦哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈反反复复烦烦烦
+			烦烦烦烦烦烦烦烦烦烦烦烦哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈反反复复烦烦烦烦烦烦烦烦烦烦烦烦烦烦
+			烦哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈反反复复烦烦烦烦烦烦烦烦烦烦烦烦烦烦烦哈哈哈哈哈哈哈哈哈哈
+			哈哈哈哈哈哈哈哈哈反反复复烦烦烦烦烦烦烦烦烦烦烦烦烦烦烦哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈反反
+			复复烦烦烦烦烦烦烦烦烦烦烦烦烦烦烦哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈反反复复烦烦烦烦烦烦烦烦烦
+			烦烦烦烦烦烦哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+			哈哈哈哈反反复复烦烦烦烦烦烦烦烦烦烦烦烦烦烦烦</div>
+		</div>
+	</body>
+</html>

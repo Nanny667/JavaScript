@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1 .active{
+            background: yellow;
+        }
+        #div1 div{
+            height: 200px;
+            width: 200px;
+            background: darkgray;
+            border: 1px solid #999;
+            display: none;
+        }
+    </style>
+    <script>
+        window.onload=function (){
+            var oDiv = document.getElementById('div1');
+            var aBtn = oDiv.getElementsByTagName('input');
+            var aDiv = oDiv.getElementsByTagName('div');
+
+            for(var i=0;i<aBtn.length;i++){
+                aBtn[i].index=i;
+                aBtn[i].onclick=function(){
+                    for(var i=0;i<aBtn.length;i++){
+                        aBtn[i].className='';
+                        aDiv[i].style.display='none';
+                    }
+                    this.className='active';
+                    aDiv[this.index].style.display='block';
+                };
+            }
+        };
+    </script>
+</head>
+<body>
+<div id="div1">
+    <input type="button" value="第一" class="active">
+    <input type="button" value="第二">
+    <input type="button" value="第三">
+    <input type="button" value="第四">
+    <div style="display: block">111</div>
+    <div>222</div>
+    <div>333</div>
+    <div>444</div>
+</div>
+</body>
+</html>

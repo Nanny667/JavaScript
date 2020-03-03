@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<script type="text/javascript">
+		function createPerson(name, qq){   //构造函数,这种也叫工厂方式
+			//系统偷偷做
+			//var this = new Object();
+			
+			//加工
+			this.name = name;
+			this.qq = qq;
+			
+			this.showName=function (){
+				alert('我的名字叫：'+this.name);
+			};
+			this.showQq=function (){
+				alert('我的QQ号码是：'+this.qq);
+			};
+			
+			//也会偷偷做一些：
+			//return this;
+		}
+		
+		var obj1 = new createPerson('张三', '123456');
+		obj1.showName();
+		obj1.showQq();
+		
+		var obj2 = new createPerson('李素', '789456');
+		obj2.showName();
+		obj2.showQq();
+		
+	</script>
+	<body>
+	</body>
+</html>

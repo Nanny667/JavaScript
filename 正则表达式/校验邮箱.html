@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script>
+			window.onload=function ()
+			{
+				var oTxt = document.getElementById('txt');
+				var oBtn = document.getElementById('btn');
+				
+				oBtn.onclick=function ()
+				{
+					var re = /^\w+@[a-z0-9]+\.[a-z]+$/;
+					
+					if(re.test(oTxt.value))
+					{
+						alert('合法的邮箱');
+					}
+					else
+					{
+						alert('你Y写错了');
+					}
+				};
+			};
+		</script>
+	</head>
+	<body>
+		邮箱：<input type="text" name="" id="txt" value="" />
+		<input type="button" name="" id="btn" value="验证" />
+	</body>
+</html>
