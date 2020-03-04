@@ -4,13 +4,29 @@
 		<meta charset="utf-8">
 		<title></title>
 		<script>
+			function toDou(n){
+				if(n >10)
+				{
+					return "" + n;
+				}
+				else {
+					return "0" + n;
+				}
+			}
 			window.onload=function (){
 				var oImg = document.getElementsByTagName('img');
-				var str = [1,6,4,5,2,9];
-				
-				for(var i=0; i<oImg.length; i++){
-					oImg[i].src = "images/'+str[i]+'.png";
+				//var str = [1,2,8,6,4,3];
+
+				function tick(){
+					var oDate = new Date();
+					var str = toDou(oDate.getHours()) + toDou(oDate.getMinutes()) + toDou(oDate.getSeconds());
+
+					for(var i=0; i<oImg.length; i++){
+						oImg[i].src = 'images/'+str[i]+'.png';
+					}
 				}
+				setInterval(tick, 1000);
+				tick();
 			};
 		</script>
 	</head>

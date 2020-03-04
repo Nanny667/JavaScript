@@ -64,9 +64,18 @@
     <script>
         window.onload=function (){
             var arrt=[
-                    '红红火火哈哈哈哈哈',
-                '灌灌灌灌灌'
-
+                "一月红红火火",
+                    "二月春风似剪刀",
+                    "我是三月呀！",
+                    "我是四月啦",
+                    "我还是五月呢",
+                    "我是六月天",
+                    "你到底是不是七月？",
+                    "八月中秋节呀",
+                    "九月你还在吗？",
+                    "十月请爱我。",
+                    "十一月我生日啦！",
+                    "圣诞节快乐哇"
             ];
             var oCon = document.getElementById('cotainer');
             var oLi = oCon.getElementsByTagName('li');
@@ -80,8 +89,8 @@
                         oLi[i].className='';
                     }
                     this.className='act';
-                    oTex.innerHTML='<h3>'+(this.index+1)+'月活动</h3><p>
-                    '+arrt[this.index]+'</p>';
+                    oTex.innerHTML=`<h3>${(this.index+1)}月活动</h3><p>
+                    ${arrt[this.index]}</p>`;
                 };
             }
         }
